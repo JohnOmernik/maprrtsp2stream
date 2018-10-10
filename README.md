@@ -17,6 +17,10 @@ This is designed to be somewhat simple in approach. Set some variables, build a 
 - At this point you should be able to run the container via ./run.sh.  Essentially CD to $APP_HOME_POSIX and then cd ./code and run rtsp2stream.sh to run the app! 
 
 
+### Output
+--------
+A basic consumer script that reads off the stream and saves to files is included for demo purposes at stream2file.py (run with stream2file.sh)
+
 ### Help/Troublshooting
 ---------
 This should be fairly straight forward. If there are issues, or just unclear documenation, please raise issues and I will address!
