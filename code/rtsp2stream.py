@@ -63,11 +63,11 @@ def main():
     cap = cv2.VideoCapture(rtsp_url)
     while capcount < capmax or capmax == -1:
         ret, frame = cap.read()
+        capcount += 1
         if capcount % skipframes == 0:
             curtime = datetime.datetime.now()
             mystrtime = curtime.strftime("%Y-%m-%d %H:%M:%S")
             epochtime = int(time.time())
-
 
             print("Saving to Stream  at %s" % capcount)
             img_str = cv2.imencode('.jpg', frame)[1].tostring()
@@ -89,7 +89,10 @@ def main():
 
             # This is the prefered method for writing to a file from OpenCV, I am using theimencode so I can get the byte to write directly to MapR Streams
 #            cv2.imwrite(output_loc + "/cap_%s.jpg" % (capcount), frame)
-        capcount += 1
+        else:
+            ret = None
+            frame = None
+            continue
         if capcount >= 10000000:
             if capcount % skipframe == 0:
                 capcount = 0

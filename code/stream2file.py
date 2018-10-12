@@ -40,7 +40,7 @@ def main():
             outmsg['ts'] = mymsg['ts']
             outmsg['epoch_ts'] = mymsg['epoch_ts']
             outmsg['cam_name'] = mymsg['cam_name']
-            
+
             fileout = "%s/stream_%s_%s.jpg" % (output_loc, outmsg['cam_name'], outmsg['ts'].replace(" ", "_").replace(":", "_"))
             mybytes = base64.b64decode(mymsg['img'])
             print("Processing message: %s and saving to %s" % (outmsg, fileout))
