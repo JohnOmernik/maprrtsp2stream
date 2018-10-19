@@ -70,7 +70,11 @@ def main():
             epochtime = int(time.time())
 
             print("Saving to Stream  at %s" % capcount)
-            img_str = cv2.imencode('.jpg', frame)[1].tostring()
+            try:
+                img_str = cv2.imencode('.jpg', frame)[1].tostring()
+            except:
+                img_str = ""
+                print("JPEG imencode Error from OpenCV, saving blank frame for reference")
             encdata = base64.b64encode(img_str)
             encdatastr = encdata.decode('utf-8')
 
