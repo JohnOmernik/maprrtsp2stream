@@ -73,7 +73,7 @@ def main():
             try:
                 img_str = cv2.imencode('.jpg', frame)[1].tostring()
             except:
-                img_str = ""
+                img_str = b""
                 print("JPEG imencode Error from OpenCV, saving blank frame for reference")
             encdata = base64.b64encode(img_str)
             encdatastr = encdata.decode('utf-8')
